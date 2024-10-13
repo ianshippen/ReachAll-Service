@@ -1,0 +1,3215 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IpPbxCDSSharedLib</name>
+    </assembly>
+    <members>
+        <member name="T:SWConfigDataSharedLib.Config.Config">
+            <summary>
+            
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Config.FeatureListBase">
+            <summary>
+            List of Features
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Config.FeatureListBase.AllFeatureIDs">
+            <summary>
+            All Knwon FeatureIDs
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Config.FeatureListBase.AllUserFeatureIDs">
+            <summary>
+            Returns the list of Feature Guids which will be part of a FeatureProfile.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.FeatureListBase.#ctor">
+            <summary>
+            standard constructor
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.FeatureListBase.#ctor(System.Collections.Generic.KeyValuePair{System.Guid,System.String}[])">
+            <summary>
+            Creates FeatureList with features from array.
+            </summary>
+            <param name="featureIDs">The features to add in new list</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.FeatureListBase.#ctor(System.Collections.Generic.List{System.Guid})">
+            <summary>
+            Creates FeatureList with features from array.
+            </summary>
+            <param name="featureIDs">The features to add in new list</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.FeatureListBase.SetEnabled(System.Boolean)">
+            <summary>
+            Set the enabled flag for all features of this list.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SWConfigDataSharedLib.Config.FeatureListBase.SetLicensed(System.Boolean)" -->
+        <member name="T:SWConfigDataSharedLib.Config.Feature">
+            <summary>
+            Represents a Feature defined by an Guid an Enabled flag.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.Feature.#ctor">
+            <summary>
+            standard constructor
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.Feature.#ctor(System.Guid)">
+            <summary>
+            constructor
+            </summary>
+            <param name="Feature">The ID of the feature</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.Feature.#ctor(System.Guid,System.Boolean,System.Boolean)">
+            <summary>
+            constructor
+            </summary>
+            <param name="Feature">The ID of the feature</param>
+            <param name="Enabled">Flag if feature is enabled</param>
+            <param name="Licensed">Flag that indicated if the Feature in enabled</param>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Config.Feature.FeatureID">
+            <summary>
+            Gets or set the ID of the feature
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Config.Feature.Enabled">
+            <summary>
+            Gets or sets the Enabled flag of the feature.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.HasAdminAccess">
+            <summary>
+            Tests is the user specified in this connection is member of role db_owner
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.HasProductionAccess">
+            <summary>
+            Tests is the user specified in this connection is member of roles: db_datareader, db_datawriter, IpPbxUser
+            and not memeber of roles: db_denydatareader, db_denydatawriter
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.HasInitalProductionAccess">
+            <summary>
+            Tests is the user specified in this connection is member of roles: db_datareader, db_datawriter
+            and not memeber of roles: db_denydatareader, db_denydatawriter. Should be used by the ConfigWiz.exe
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.GetLogins(System.Boolean)">
+            <summary>
+            Retrieves a list with all known logins on the database instance specified by this connection
+            </summary>
+            <returns>List of login names</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.CreateLogin(System.String,System.String)">
+            <summary>
+            Creates a login or replaces the password of an existing login on the database instance 
+            specified by this connection.
+            </summary>
+            <param name="UserName">Name of the new or existing login</param>
+            <param name="password">The password</param>
+            <returns>True is successfull</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.GrantAccess(System.String)">
+            <summary>
+            Grants access to the database specified by this connection.
+            The role IpPbxUser will be created if not exists.
+            The user get rolemembership to IpPbxUser, db_datareader and db_datawriter
+            </summary>
+            <param name="UserName">The Login</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.GrantAccess(System.String,System.Boolean)">
+            <summary>
+            Grants access to the database specified by this connection.
+            The role IpPbxUser will be created if not exists.
+            The user get rolemembership to IpPbxUser, db_datareader and db_datawriter
+            </summary>
+            <param name="UserName">The Login</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.GrantMaintenanceAccess(System.String,System.Boolean)">
+            <summary>
+            Grants access to the database specified by this connection (maintenance).
+            </summary>
+            <param name="UserName">The Login</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.GrantMaintenanceAccess(System.String)">
+            <summary>
+            Grants access to the database specified by this connection (maintenance).
+            </summary>
+            <param name="UserName">The Login</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.CheckUserRoles(System.String)">
+            <summary>
+            Checks the users role configuration
+            The role IpPbxUser will be created if not exists.
+            The user get rolemembership to IpPbxUser, db_datareader and db_datawriter
+            </summary>
+            <param name="UserName">The Login</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.GetBiggestTransactionLogFile(System.String@,System.Int16@,System.String@,System.String@,System.String@,System.String@,System.UInt64@)">
+            <summary>
+            Retrieves informations about the biggest transaction log file 
+            </summary>
+            <param name="Name"></param>
+            <param name="FileID"></param>
+            <param name="FileName"></param>
+            <param name="Size"></param>
+            <param name="Maxsize"></param>
+            <param name="FileSize"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:SWConfigDataSharedLib.Config.SDBConnection.TruncateAndShrinkTransactionLog(System.String,System.String,System.String@,System.String@)" -->
+        <!-- Badly formed XML comment ignored for member "M:SWConfigDataSharedLib.Config.SDBConnection.TruncateAndShrinkTransactionLog(System.String,System.String,System.Int32,System.String@,System.String@)" -->
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.GetDBOption(System.String)">
+            <summary>
+            Retrieves weather the database option is activted
+            </summary>
+            <param name="option">String representing the the db option. See SQL Server documentation</param>
+            <returns>True if activated, otherwise false</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Config.SDBConnection.SetDBOption(System.String,System.Boolean)">
+            <summary>
+            Activates or deactivats a database option.
+            </summary>
+            <param name="option">String representing the the db option. See SQL Server documentation</param>
+            <param name="value">True activated,, false deactivated.</param>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Enums.ClientDeviceType">
+            <summary>
+            Enum for User Device Registrations through PhoneClientFacade.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteCOMException">
+            <summary>
+            Exception thrown by an COM RCW of the CDS service. It contains an HRESULT failure value.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteBaseException">
+            <summary>
+            SRemoteBaseException is transport class of SBaseException.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.#ctor">
+            <summary>
+            standard contructor
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.#ctor(System.Exception)">
+            <summary>
+            standard contructor, marshalling the exception
+            </summary>
+            <param name="exception">Exception to be marshalled</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.#ctor(System.Exception,System.Boolean)">
+            <summary>
+            standard contructor, marshalling the exception
+            </summary>
+            <param name="exception">Exception to be marshalled</param>
+            <param name="Localized">Exception localization status</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.#ctor(SWConfigDataSharedLib.Exceptions.SBaseException)">
+            <summary>
+            standard contructor, marshalling the exception
+            </summary>
+            <param name="exception">Exception to be marshalled</param>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.RemoteType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.Message">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.StackTrace">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.InnerException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.Localized">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SRemoteBaseException.LocalizedMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SCOMException">
+            <summary>
+            Exception thrown by a COM RCW of the CDS service. It contains an HRESULT failure value.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SBaseException">
+            <summary>
+            SBaseException is the base exception class of all CDS exceptions. The source of a CDS exception can be the CDSClient or the CDSService.
+            A can cntain a localizable message. In that case the exception contains a ResourceID string and parameter list. The localization will be done 
+            implicitly and in the context (culture) of the using appilication.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SBaseException.m_LocalizedMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SBaseException.remoteException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SBaseException.m_Localized">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SBaseException.#ctor(SWConfigDataSharedLib.Exceptions.SRemoteBaseException)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="remoteException"></param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SBaseException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SBaseException.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message"></param>
+            <param name="Localized">True if message is localized.</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SBaseException.#ctor(SWConfigDataSharedLib.Exceptions.SMessageResources,System.Object[])">
+            <summary>
+            Contructor with message from resource
+            </summary>
+            <param name="MessageResource"></param>
+            <param name="paramters"></param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SBaseException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SBaseException.#ctor(System.String,System.Exception,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+            <param name="Localized"></param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SBaseException.#ctor(System.Exception,SWConfigDataSharedLib.Exceptions.SMessageResources,System.Object[])">
+            <summary>
+            Contructor with message from resource
+            </summary>
+            <param name="innerException"></param>
+            <param name="MessageResource"></param>
+            <param name="paramters"></param>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SBaseException.isRemoteException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SBaseException.Message">
+            <summary>
+            Get the message of the exception. It the message is localizable the message will be localized automaticly.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SBaseException.Localized">
+            <summary>
+            True if the message is Localized. All exception containing ResourceIDs return true. Exceptions from other subsystems like SQL-Server or OS can be localized too.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SBaseException.StackTrace">
+            <summary>
+            Gets the stack trace
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SBaseException.RemoteInnerException">
+            <summary>
+            The tranport class
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SBaseException.RemoteType">
+            <summary>
+            Get the remote type of this exception.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SBaseException.MessageSummary">
+            <summary>
+            Gets the message of the exceptions and its inner exception
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SBaseException.HasLocalizedMessage">
+            <summary>
+            True if message is localizable from resource.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SBaseException.MessageResource">
+            <summary>
+            The resource id.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SCOMException.hr">
+            <summary>
+            Error Code
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SCOMException.#ctor(System.Int32,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="hr">ErrorCode.</param>
+            <param name="message">Additional message.</param>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SCOMException.HResult">
+            <summary>
+            Returns the error code.
+            </summary>
+            <returns>the error code</returns>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SCOMException.MessageSummary">
+            <summary>
+            Creates a message including the ErrorCode as string and the additional message.
+            </summary>
+            <returns>message</returns>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteDBConcurrencyException">
+            <summary>
+            Transport class of Exception SDBConcurrencyException
+            </summary>
+            <remarks>This Class will be marshalled by SSoapException. It is usable in client and server context.</remarks>
+            <exclude/>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SRemoteDBConcurrencyException.tableName">
+            <summary>
+            Name of database table causing the exception.
+            </summary>
+            <remarks>Only filled when dataSetTimeout=false</remarks>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SRemoteDBConcurrencyException.rowKey">
+            <summary>
+            The prinary key of the entry that causes the exception
+            </summary>
+            <remarks>Only filled when dataSetTimeout=false</remarks>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SRemoteDBConcurrencyException.dataSetTimeout">
+            <summary>
+            True if the exception is caused by invalid or timeout dataset on CDSService.
+            False if one or more entries chnaged since last read operation.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException">
+            <summary>
+            A database write operation failed because of one these reasons:
+            <br/>
+            1) A database entry was modified since the last read operation.<br/>
+            2) The cached dataset in the CDSService has timed out.<br/>
+            3) The cached dataset has become invalid by a prior read operation from this client.<br/>
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.tableName">
+            <summary>
+            Name of database table causing the exception.
+            </summary>
+            <remarks>Only filled when dataSetTimeout=false</remarks>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.rowKey">
+            <summary>
+            The prinary key of the entry that causes the exception
+            </summary>
+            <remarks>Only filled when dataSetTimeout=false</remarks>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.dataSetTimeout">
+            <summary>
+            True if the exception is caused by invalid or timeout dataset on CDSService.
+            False if one or more entries chnaged since last read operation.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.#ctor(System.Data.DBConcurrencyException)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ErrCode">ErrorCode.</param>
+            <param name="message">Additional message.</param>
+            <param name="Localized">The Localized status of exception</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ErrCode">ErrorCode.</param>
+            <param name="message">Additional message.</param>
+            <param name="Localized">The Localized status of exception</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ErrCode">ErrorCode.</param>
+            <param name="message">Additional message.</param>
+            <param name="Localized">The Localized status of exception</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.#ctor(SWConfigDataSharedLib.Exceptions.SMessageResources,System.Object[])">
+            <summary>
+            Cconstructor
+            </summary>
+            <param name="message">The message</param>
+            <param name="localized">True id message is localized</param>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.TableName">
+            <summary>
+            Name of database table causing the exception.
+            </summary>
+            <remarks>Only filled when dataSetTimeout=false</remarks>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.RowKey">
+            <summary>
+            The prinary key of the entry that causes the exception
+            </summary>
+            <remarks>Only filled when dataSetTimeout=false</remarks>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.MessageSummary">
+            <summary>
+            Gets string containing the message of this exception and its innerExceptions
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SDBConcurrencyException.IsDataSetTimeout">
+            <summary>
+            True if the exception is caused by invalid or timeout dataset on CDSService.
+            False if one or more entries chnaged since last read operation.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteTimeoutException">
+            <summary>
+            Exception throw in case of timeout.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.STimeoutException">
+            <summary>
+            Exception thrown by CDSClient or CDSService
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.STimeoutException.ClientSide">
+            <summary>
+            True if timout occured by connecting the CDS serivice
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.STimeoutException.ServerSide">
+            <summary>
+            True if timout occured in the CDS serivice
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_ERROR_REGREAD">
+            <summary>
+            A required parameter (%1) could not be read from the registry.
+            This may be caused by an installation problem.
+            Reinstall the software.
+            For further information consult the documentation or have a look at http://www.swyx.com/support.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_ERROR_DB_WRONG_VERSION">
+            <summary>
+            Version of the database is incorrect: %1.
+            For further information consult the documentation or have a look at http://www.swyx.com/support.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_ERROR_PROFILE">
+            <summary>
+            An error occured during reading profile files. %1.
+            For further information consult the documentation or have a look at http://www.swyx.com/support.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_ERROR">
+            <summary>
+            Unspecified error occured: %1.
+            For further information consult the documentation or have a look at http://www.swyx.com/support.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_HSW_CLIENT_REGISTRATION_FAILED">
+            <summary>
+            Hosted SwyxWare (%1) could not be registered at the Report and Licensing Service.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_HSW_CLIENT_ACCOUNTING_FAILED">
+            <summary>
+            Accounting of the Hosted SwyxWare (%1) failed.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_NO_VALID_ALBINONI_LICENSE">
+            <summary>
+            Hosted SwyxWare License is missing.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_SQL_TIME_NOT_SYNCHRON">
+            <summary>
+            Difference of SwyxServer SystemTime and SQLServer SystemTime exceeds maximum.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_REPORT_NOT_SENT">
+            <summary>
+            Sending report to %1 failed.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_REPORT_FAILED">
+            <summary>
+            Generation of report for %1 failed.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_HSW_CLIENT_REGISTRATION_FAILED_DATASOURCE">
+            <summary>
+            Hosted SwyxWare (%1) could not be registered at the Report and Licensing Service because the database is already used by an active HSW Client registration.
+            Check the database configuration of this Hosted SwyxWare or deactivate the old registration at the Report and License Service.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_HSW_CLIENT_REGISTRATION_FAILED_DISABLED">
+            <summary>
+            Hosted SwyxWare (%1) could not be registered at the Report and Licensing Service because SwyxWare has been deactivated.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_COULD_NOT_READ_LICENSE_FROM_SERVER">
+            <summary>
+            The ConfigDataStore was not able to read licenses from server.
+            The error is:
+            %1.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_SAVE_FILE_DATA_TO_DISK_FAILED">
+            <summary>
+            Saving file data to disk failed with message: %1.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_SAVE_FILE_DATA_TO_DB_FAILED">
+            <summary>
+            Saving file data to database failed with message: %1.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_WARN">
+            <summary>
+            Warning message:
+            %1.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_HSWCLIENT_REGISTRATION_FAILED_BECAUSE_OF_MISSING_LICENSE">
+            <summary>
+            HSWClient "%1" registration failed beacause of missing license.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_DB_USAGE_REACHES_LIMIT">
+            <summary>
+            The database size is reaching the limit of the MS SQL Server Edition.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_RESETTING_LOCATION_TIMEZONE">
+            <summary>
+            The time zone setting of the location %1 has been reseted to the current system time zone.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_FS_USAGE_REACHES_LIMIT">
+            <summary>
+            The amount of free space on the file system used for fax files is low.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_NUMBER_NOT_UNIQUE_WILL_BE_DROPPED">
+            <summary>
+            The number %1 from user or group %2) is already used and will not be synchronized.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_SYNCHRONIZATION_MESSAGE_COULD_NOT_SENT_TO">
+            <summary>
+            Sending a synchronization message to %1 failed with: %2
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_INTERSITE_PRESENCE_MESSAGE_COULD_NOT_SENT_TO">
+            <summary>
+            Sending a intersite presence message to %1 failed with: %2
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_INFO_STARTED">
+            <summary>
+            Service started successfully.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_INFO_STOPPED">
+            <summary>
+            Service stopped successfully.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_HSW_CLIENT_REGISTERED">
+            <summary>
+            Hosted SwyxWare (%1) has been registered at the Report and Licensing Service.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_HSW_CLIENT_ACCOUNTED">
+            <summary>
+            Hosted SwyxWare (%1) has been accounted successfully.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_REGISTRATION_MANAGER_INIT">
+            <summary>
+            Registration manager has been initialized.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_ACCOUNTING_PRERIOD_ENTER">
+            <summary>
+            Accounting has been enabled.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_ACCOUNTING_PRERIOD_LEFT">
+            <summary>
+            Accounting has been disabled.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_SERVER_MODE">
+            <summary>
+            Server runs in %1 mode.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_REPORT_SENT">
+            <summary>
+            Sent report to %1.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_HSW_CLIENT_DEACTIVATED_BY_DEACTIVATIONTIME">
+            <summary>
+            HSW Client %1 has been deactivated, because deactivation time has been reached.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_HSW_CLIENT_DEACTIVATED_DIRECTLY">
+            <summary>
+            HSW Client %1 has been deactivated by Administrator.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_INFO">
+            <summary>
+            Info Message: %1.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_SYNCMESSAGE_SENT_TO">
+            <summary>
+            A synchronization message has been sent to %1.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_SYNCMESSAGE_RECVEIVED_FROM">
+            <summary>
+            A synchronization message from %1 has been received.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.MessageIDs.CDS_USER_AUTHENTICATION_FAILED">
+            <summary>
+            Authentication of user '%1' failed.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.EventCategoryConfigDataStore.CategoryIDs.SWEVLOG_CATEGORY_CDSSERVER">
+            <summary>
+            Server
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Profiles.NumberReplacement">
+            <summary>
+            Decibes a number replacement
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Profiles.NumberReplacement.Prefix">
+            <summary>
+            Gets or sets the prefix
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Profiles.NumberReplacement.ReplacementString">
+            <summary>
+            Gets or sets the replacement
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Profiles.NumberReplacement.CountryCode">
+            <summary>
+            Gets or sets the country code. The country code must match with the contry code of the calling device. 
+            Can be mpty string.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Profiles.NumberReplacement.AreaCode">
+            <summary>
+            Gets or sets the area code. The country code must match with the area of the calling device.
+            Can be mpty string.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Profiles.NumberFormatProfile">
+            <summary>
+            Nothing
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Profiles.Profile">
+            <summary>
+            Base class for all Profile classes
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.Profile.doc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.Profile.node">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.NumberFormatProfile.ProfileID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.NumberFormatProfile.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.NumberFormatProfile.InboundReplacements">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.NumberFormatProfile.OutboundReplacements">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Profiles.ProviderProfile">
+            <summary>
+            ProviderProfile is dataholder class for one ProviderProfile
+            </summary>
+            <exclude/>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.ProviderProfile.ProviderID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.ProviderProfile.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.ProviderProfile.outbound_called">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.ProviderProfile.outbound_calling">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.ProviderProfile.inbound_called">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.ProviderProfile.inbound_calling">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Profiles.ProviderProfile.CreateProfileObject(System.String,System.String)">
+            <summary>
+            Creatses the dataholder object of the ProviderProfile
+            </summary>
+            <param name="ElementType"></param>
+            <param name="Element"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Profiles.SipProviderProfile">
+            <summary>
+            SipProviderProfile is dataholder class for one SipProviderProfile
+            </summary>
+            <exclude/>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.proxy">
+            <summary>
+            SipProxy
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.proxyNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.registrar">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.registrarNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.realm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.realmNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.stun">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.stunNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.DtmfMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.DtmfModeNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UseDisplayInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UseDisplayInfoNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.reRegistrationTimeout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.reRegistrationTimeoutNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.CallingPartyNumberPosition">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.CallingPartyNumberPositionNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UseRegistrationNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UseRegistration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UseOverlapDialingNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UseOverlapDialing">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.EnableUsernameFieldNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.EnableUsernameField">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UsernameFieldDescriptionNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UsernameFieldDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UserIdFieldDescriptionNull">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Profiles.SipProviderProfile.UserIdFieldDescription">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SMessageResources">
+            <summary>
+            ResourceStrings used by CDS exceptions to generate localizable messages.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.UserHasNoScriptPath">
+            <summary>
+            UserHasNoScriptPath
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.UsersScriptDirectoryDoesNotExist">
+            <summary>
+            UsersScriptDirectoryDoesNotExist
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.TestString">
+            <summary>
+            TestString
+            </summary>
+            <exclude/>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.FileShareIsMissing">
+            <summary>
+            FileShareIsMissing
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.NoLocationMatchesWithNumber">
+            <summary>
+            NoLocationMatchesWithNumber
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.OnlyCanonicalNumbersAllowed">
+            <summary>
+            OnlyCanonicalNumbersAllowed
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.DBSchemaVersionMismatch">
+            <summary>
+            DBSchemaVersionMismatch
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.WSLayerVersionMismatch">
+            <summary>
+            WSLayerVersionMismatch
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.WSLayerVersionMismatchUnknown">
+            <summary>
+            WSLayerVersionMismatch
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.ItemNotValidForAction">
+            <summary>
+            ItemNotValidForAction
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.NoDefaultLocationDefined">
+            <summary>
+            ItemNotValidForAction
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.NewEntryIsInvalid">
+            <summary>
+            NewEntryIsInvalid
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SMessageResources.IDS_ERR_UserHasNotSufficientRights">
+            <summary>
+            NewEntryIsInvalid
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteConfigDataException">
+            <summary>
+            Transport class of Exception SRemoteConfigDataException
+            </summary>
+            <remarks>This Class will be marshalled by SSoapException. It is usable in client and server context.</remarks>
+            <exclude/>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SRemoteConfigDataException.#ctor">
+            <summary>
+            constructor
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SConfigDataException">
+            <summary>
+            Indicates that the data in the CDS ConfigDataStore is invalid, or would become invalid by the current operation.
+            The message of SConfigDataException is localized in the CDSClient.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SConfigDataException.#ctor(SWConfigDataSharedLib.Exceptions.SRemoteConfigDataException)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="ex">The remote exception</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SConfigDataException.#ctor(SWConfigDataSharedLib.Exceptions.SMessageResources,System.Object[])">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="msgRes">The resourceString</param>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Globalization.SStringResources">
+            <summary>
+            String Resources Enumeration
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.Empty">
+            <summary>
+            No content
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultLocation">
+            <summary>
+            DefaultLocation
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileNoCalls">
+            <summary>
+            DefaultAccessProfileNoCalls
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileInternal">
+            <summary>
+            DefaultAccessProfileInternal
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileLocal">
+            <summary>
+            DefaultAccessProfileLocal
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileEurope">
+            <summary>
+            DefaultAccessProfileEurope
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileLongDist">
+            <summary>
+            DefaultAccessProfileLongDist
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileGrantAll">
+            <summary>
+            DefaultAccessProfileGrantAll
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileNoCallsDesc">
+            <summary>
+            DefaultAccessProfileNoCalls
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileInternalDesc">
+            <summary>
+            DefaultAccessProfileInternal
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileLocalDesc">
+            <summary>
+            DefaultAccessProfileLocal
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileEuropeDesc">
+            <summary>
+            DefaultAccessProfileEurope
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileLongDistDesc">
+            <summary>
+            DefaultAccessProfileLongDist
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultAccessProfileGrantAllDesc">
+            <summary>
+            DefaultAccessProfileGrantAll
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultPortBundleNameISDN">
+            <summary>
+            DefaultPortBundleNameISDN
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.DefaultPortBundleNameSIP">
+            <summary>
+            DefaultPortBundleNameSIP
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.OEMName">
+            <summary>
+            OEMName
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.PortVoiceUserName">
+            <summary>
+            PortVoiceUserName
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.PortT38UserName">
+            <summary>
+            PortT38UserName
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.PortDataUserName">
+            <summary>
+            PortDataUserName
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_CUSTOMPROVIDERPROFILEFILENAME">
+            <summary>
+            IDS_CUSTOMPROVIDERPROFILEFILENAME
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_SERVERROOTFOLDER">
+            <summary>
+            IDS_SERVERROOTFOLDER
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_SHARENAME">
+            <summary>
+            IDS_SHARENAME
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_SYSTEMPROVIDERPROFILEFILENAME">
+            <summary>
+            IDS_SYSTEMPROVIDERPROFILEFILENAME
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_USERROOTFOLDER">
+            <summary>
+            IDS_USERROOTFOLDER
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_SYSTEMNUMBERPROFILEFILENAME">
+            <summary>
+            IDS_SYSTEMNUMBERPROFILEFILENAME
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_CUSTOMNUMBERPROFILEFILENAME">
+            <summary>
+            IDS_CUSTOMNUMBERPROFILEFILENAME
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_NOT_CONFIGURED">
+            <summary>
+            IDS_NOT_CONFIGURED
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_UPDATED">
+            <summary>
+            IDS_UPDATED
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Globalization.SStringResources.IDS_VERSION">
+            <summary>
+            IDS_VERSION
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Globalization.SResourceManager">
+            <summary>
+            ResourceManager localizes static strings from resource enumeration
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.SResourceManager.LocalizeEnum(System.Object)">
+            <summary>
+            Locallizes an enumeration value
+            </summary>
+            <param name="enumValue"></param>
+            <returns>Localized string</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.SResourceManager.Localize(SWConfigDataSharedLib.Globalization.SStringResources)">
+            <summary>
+            Locallizes the resourceString
+            </summary>
+            <param name="res">resource string</param>
+            <returns>Localized string</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.SResourceManager.Localize(SWConfigDataSharedLib.Globalization.SStringResources,System.Object)">
+            <summary>
+            Locallizes the resourceString
+            </summary>
+            <param name="res">resource string</param>
+            <param name="arg0">An Object to format. </param>
+            <returns>Localized string</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.SResourceManager.Localize(SWConfigDataSharedLib.Globalization.SStringResources,System.Object,System.Object)">
+            <summary>
+            Locallizes the resourceString
+            </summary>
+            <param name="res">resource string</param>
+            <param name="arg0">An Object to format. </param>
+            <param name="arg1">An Object to format. </param>
+            <returns>Localized string</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.SResourceManager.Localize(SWConfigDataSharedLib.Globalization.SStringResources,System.Object,System.Object,System.Object)">
+            <summary>
+            Locallizes the resourceString
+            </summary>
+            <param name="res">resource string</param>
+            <param name="arg0">An Object to format. </param>
+            <param name="arg1">An Object to format. </param>
+            <param name="arg2">An Object to format. </param>
+            <returns>Localized string</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.SResourceManager.Localize(SWConfigDataSharedLib.Globalization.SStringResources,System.Object[])">
+            <summary>
+            Locallizes the resourceString
+            </summary>
+            <param name="res">resource string</param>
+            <param name="args">An Object array containing zero or more objects to format.</param>
+            <returns>Localized string</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.SResourceManager.Localize(System.String)">
+            <summary>
+            Locallizes the resourceString
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.SResourceManager.Culture">
+            <summary>
+            Returns the current Culture. (Set by config file)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Helpers.NumberHelper">
+            <summary>
+            Class to convert phonenumbers
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Helpers.NumberHelper.IsNumberCanonical(System.String)">
+            <summary>
+            Returns true if number is canonical with +
+            </summary>
+            <param name="Number"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Helpers.NumberHelper.removeNonValidChars(System.String)">
+            <summary>
+            Removes non valid chars like '(' from number
+            </summary>
+            <param name="Number"></param>
+            <returns></returns>
+            <remarks>obsolet digits will not be removed. +49 (0)231 </remarks>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Helpers.NumberHelper.GetVanitySQLFilter(System.String)">
+            <summary>
+            Converts a vanity number into digits and adds a % for SQl Query
+            </summary>
+            <param name="inFilter"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DBSchemaVersionMismatch">
+            <summary>
+              Looks up a localized string similar to The DBSchema version mismatches. Required:{0} Found:{1}.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileEurope">
+            <summary>
+              Looks up a localized string similar to European destinations.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileEuropeDesc">
+            <summary>
+              Looks up a localized string similar to Default profile allowing calls to all internal and european destinations..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileGrantAll">
+            <summary>
+              Looks up a localized string similar to No call restrictions.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileGrantAllDesc">
+            <summary>
+              Looks up a localized string similar to Default profile allowing calls to all destinations..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileInternal">
+            <summary>
+              Looks up a localized string similar to Internal destinations.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileInternalDesc">
+            <summary>
+              Looks up a localized string similar to Default profile allowing calls only to internal destinations..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileLocal">
+            <summary>
+              Looks up a localized string similar to Local destinations.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileLocalDesc">
+            <summary>
+              Looks up a localized string similar to Default profile allowing calls only to internal and local destinations..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileLongDist">
+            <summary>
+              Looks up a localized string similar to National destinations.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileLongDistDesc">
+            <summary>
+              Looks up a localized string similar to Default profile allowing calls to internal and all national destinations..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileNoCalls">
+            <summary>
+              Looks up a localized string similar to Deny all calls.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultAccessProfileNoCallsDesc">
+            <summary>
+              Looks up a localized string similar to Default profile allowing no calls at all..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultLocation">
+            <summary>
+              Looks up a localized string similar to DefaultLocation.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultPortBundleNameISDN">
+            <summary>
+              Looks up a localized string similar to Main ISDN Trunk Group.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.DefaultPortBundleNameSIP">
+            <summary>
+              Looks up a localized string similar to Main SIP Trunk Group.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.ERR_USERS_MAX_PHONECALL_LIST_IS_0">
+            <summary>
+              Looks up a localized string similar to The maximal length of the caller list is 0..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.FeatureProfileNewUserMaximumInvalid">
+            <summary>
+              Looks up a localized string similar to There are currently more Users assigned to the feature profile than the new maximum will allow..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.FileShareIsMissing">
+            <summary>
+              Looks up a localized string similar to The file share {0} does not exist..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CHECK_FILEDATA_LOCATION">
+            <summary>
+              Looks up a localized string similar to Moving files to configured location..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CHECK_STATIC_CHANGEMANAGEMENT_CONFIG">
+            <summary>
+              Looks up a localized string similar to Change management.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CHECK_STATIC_CONFIG">
+            <summary>
+              Looks up a localized string similar to Checking configuration: .
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CHECK_STATIC_FEATURE_CONFIG">
+            <summary>
+              Looks up a localized string similar to FeatureList.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CHECK_STATIC_LICENSE_CONFIG">
+            <summary>
+              Looks up a localized string similar to Licenses.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CHECK_STATIC_SECURITY_CONFIG">
+            <summary>
+              Looks up a localized string similar to Security.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CIENT_CONNECTION_TIMEOUIDS_CIENT_CONNECTION_TIMEOUT">
+            <summary>
+              Looks up a localized string similar to An timeout occurred trying to connect the server..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CIENT_CONNECTION_TIMEOUT">
+            <summary>
+              Looks up a localized string similar to The server request has timed out on client side. Check the connection to the server..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ConferenceRoom_Modified">
+            <summary>
+              Looks up a localized string similar to Number of conference rooms changed.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CUSTOMNUMBERPROFILEFILENAME">
+            <summary>
+              Looks up a localized string similar to CustomNumberFormatProfiles.config.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_CUSTOMPROVIDERPROFILEFILENAME">
+            <summary>
+              Looks up a localized string similar to CustomProviderProfiles.config.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_AuthenticationFailed">
+            <summary>
+              Looks up a localized string similar to Authentication failed: Username or password is incorrect..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_ChangePassword">
+            <summary>
+              Looks up a localized string similar to Changing the password of User {0} failed: Old password is incorrect..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_FaxClientConfigNotFound">
+            <summary>
+              Looks up a localized string similar to No FaxClient configuration found. New FaxClient user?.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_FaxJobAlreadyLocked">
+            <summary>
+              Looks up a localized string similar to Fax job is already locked by another system component..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_FaxJobInIncorrectState">
+            <summary>
+              Looks up a localized string similar to An action in incorrect state..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_FaxJobLocked">
+            <summary>
+              Looks up a localized string similar to Fax job is locked by another system component..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_FaxJobNotFound">
+            <summary>
+              Looks up a localized string similar to Fax job not found..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_FILE_BLOCKED_BY_UPLOAD">
+            <summary>
+              Looks up a localized string similar to The file is blocked by an pending upload operation..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_FILEDATA_NOT_FOUND_IN_DB">
+            <summary>
+              Looks up a localized string similar to The file data of the file {0} from User {1} could not be found in the database..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_FILEDATA_NOT_FOUND_IN_FS">
+            <summary>
+              Looks up a localized string similar to The file data of the file {0} from User {1} could not be found in the filesystem..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_FileUploadBroken">
+            <summary>
+              Looks up a localized string similar to File upload was canceled by server..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_GroupNotFound">
+            <summary>
+              Looks up a localized string similar to Group not found..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_IFB_STATUS_NOT_INITIALIZED">
+            <summary>
+              Looks up a localized string similar to Server status currently not available..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_INVALID_CHAR_IN_FILENAME">
+            <summary>
+              Looks up a localized string similar to The file name contains invalid characters..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_IpPbxUserNotFound">
+            <summary>
+              Looks up a localized string similar to The User {0} is unknown..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_IpPbxUserNotUnique">
+            <summary>
+              Looks up a localized string similar to The current Windows User {0} is assigned to more than one IpPbx User. Please specify the IpPbx User..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_ItemNotFound">
+            <summary>
+              Looks up a localized string similar to Item not found..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_MaxScriptFileSizeExceed">
+            <summary>
+              Looks up a localized string similar to The maximum size of a callrouting script is {0} MB..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_No_User_Context">
+            <summary>
+              Looks up a localized string similar to Missing valid User context..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_NoFaxServerConnection">
+            <summary>
+              Looks up a localized string similar to No connection to FaxServer! Service running?.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_PortNotFound">
+            <summary>
+              Looks up a localized string similar to Trunk not found..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_REPLICATION_NOT_DELETED_ON_MASTER">
+            <summary>
+              Looks up a localized string similar to The database replication has not been deleted. The replication has to be deleted before updating the database. To delete replication, execute following command in the command shell: {0}.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_REPLICATION_NOT_DELETED_ON_STANDBY">
+            <summary>
+              Looks up a localized string similar to The database replication has not been deleted. The replication has to be deleted before updating the database. To delete replication, execute following command in the command shell: {0}.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_SecureConnectionFailed">
+            <summary>
+              Looks up a localized string similar to Cannot create a secure channel to the server. Please check that the time is synchronised between your computer and the server..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_SystemAdminCannotSelfDowngrade">
+            <summary>
+              Looks up a localized string similar to The current User cannot downgrade himself from the highest security level..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_UserCanNotSelfDelete">
+            <summary>
+              Looks up a localized string similar to The current User can not delete himself..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_UserCannotSelfDowngrade">
+            <summary>
+              Looks up a localized string similar to The current User cannot downgrade himself..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_UserHasNoRightToAccessPrivateFile">
+            <summary>
+              Looks up a localized string similar to The current User has not the permission to access a private file of another User..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_UserHasNoSIPPassword">
+            <summary>
+              Looks up a localized string similar to The User {0} has no password..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_UserHasNotSufficientRights">
+            <summary>
+              Looks up a localized string similar to Access Denied: The User {0} has insufficient privileges for this operation..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_UserNeedsHigherSecurityLevelForOperation">
+            <summary>
+              Looks up a localized string similar to Access Denied: The current User has insufficient privileges for either assigning an administrative profile, setting the password of or deleting another User with a higher security level..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_UserNotFound">
+            <summary>
+              Looks up a localized string similar to User not found..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_WindowsUserNotFound">
+            <summary>
+              Looks up a localized string similar to The Windows User {0} is unknown..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERR_Writing_Foreign_Phonebookentry">
+            <summary>
+              Looks up a localized string similar to Only phonebook entries with UserID of the current User can be saved..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ERRR_ItemNotFound">
+            <summary>
+              Looks up a localized string similar to Item not found..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_FaxChanged_ChannelRemoved">
+            <summary>
+              Looks up a localized string similar to Fax Channel removed.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_FaxChanged_ChannledAdded">
+            <summary>
+              Looks up a localized string similar to Fax Channel added.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Call_Recording_Desc">
+            <summary>
+              Looks up a localized string similar to The User is allowed to switch the recording of conversations on and off..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Call_Recording_Name">
+            <summary>
+              Looks up a localized string similar to SwyxRecord.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Call_Routing_Manager_Desc">
+            <summary>
+              Looks up a localized string similar to The User is allowed to start the CRM and rules can be activated or deactivated. New rules can be created and existing rules can be modified.  Option can be set only if Forwardings usage is allowed..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Call_Routing_Manager_Name">
+            <summary>
+              Looks up a localized string similar to SwyxBCR (Basic Call Routing).
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Conferencing_Desc">
+            <summary>
+              Looks up a localized string similar to The User is allowed to use Conferences..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Conferencing_Name">
+            <summary>
+              Looks up a localized string similar to SwyxAdHocConference.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_CTI_Desc">
+            <summary>
+              Looks up a localized string similar to The User is allowed to use CTI..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_CTI_Name">
+            <summary>
+              Looks up a localized string similar to SwyxCTI.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Extended_Call_Desc">
+            <summary>
+              Looks up a localized string similar to The User is allowed to start the GSE, create and use ECR rules. Option can be set only if CRM and Forwardings usage is allowed..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Extended_Call_Name">
+            <summary>
+              Looks up a localized string similar to SwyxECR (Extended Call Routing).
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_IPbxFax_Desc">
+            <summary>
+              Looks up a localized string similar to The User is allowed to use SwyxFax..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_IPbxFax_Name">
+            <summary>
+              Looks up a localized string similar to SwyxFax.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_IpPbxPhone_Desc">
+            <summary>
+              Looks up a localized string similar to The User is allowed to use a system phone which requires a phone license..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_IpPbxPhone_Name">
+            <summary>
+              Looks up a localized string similar to SystemPhone.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_SwyxAppliance_Desc">
+            <summary>
+              Looks up a localized string similar to SwyxAppliance.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_SwyxAppliance_Name">
+            <summary>
+              Looks up a localized string similar to SwyxAppliance.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_SwyxGate_Desc">
+            <summary>
+              Looks up a localized string similar to Special channel license for SwyxAppliance.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_SwyxGate_Name">
+            <summary>
+              Looks up a localized string similar to SwyxGate.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_SwyxMobile_Desc">
+            <summary>
+              Looks up a localized string similar to Allows the User to use mobile extensions..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_SwyxMobile_Name">
+            <summary>
+              Looks up a localized string similar to SwyxMobile.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Voicemail_Desc">
+            <summary>
+              Looks up a localized string similar to The User is allowed to use Voicemail..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Feature_Voicemail_Name">
+            <summary>
+              Looks up a localized string similar to SwyxVoicemail.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_FeatureBasicFunctionality_Desc">
+            <summary>
+              Looks up a localized string similar to Enables the basic functionality (Required for all other features)..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_FeatureBasicFunctionality_Name">
+            <summary>
+              Looks up a localized string similar to SwyxBF (BasicFunctionality).
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_FeatureOptionPackLotusNotesAccess_Desc">
+            <summary>
+              Looks up a localized string similar to Enables integration into Lotus Notes.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_FeatureOptionPackLotusNotesAccess_Name">
+            <summary>
+              Looks up a localized string similar to LotusNotes.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_FILE_CHECKED">
+            <summary>
+              Looks up a localized string similar to File has been checked..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_FILE_MOVED_FROM_DB_TO_FS">
+            <summary>
+              Looks up a localized string similar to File has been moved from database to file system..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_FILE_MOVED_FROM_FS_TO_DB">
+            <summary>
+              Looks up a localized string similar to File has been moved from file system to database..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_INVALID_ROUTING_RECORD_RESTRICTION">
+            <summary>
+              Looks up a localized string similar to The combination of routing record restrictions is invalid..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_MIN_NOT_UNIQUE">
+            <summary>
+              Looks up a localized string similar to The mobile identification number {0} is already used by another User..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_MISSING_PASSWORD">
+            <summary>
+              Looks up a localized string similar to Missing Username, Password information..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_NO_PASSWORD_SPECIFIED">
+            <summary>
+              Looks up a localized string similar to User credentials do not contain password information..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_NO_VALID_ALBINONI_LICENSE">
+            <summary>
+              Looks up a localized string similar to No valid HSW License available..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_NOT_CONFIGURED">
+            <summary>
+              Looks up a localized string similar to Not configured.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_OptionPack_Conference_Desc">
+            <summary>
+              Looks up a localized string similar to The option pack conferencing..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_OptionPack_Conference_Name">
+            <summary>
+              Looks up a localized string similar to Conference.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_PhoneBookAdministrator_Name">
+            <summary>
+              Looks up a localized string similar to PhoneBook Administrator.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ProfileChanged_FeatureAdded">
+            <summary>
+              Looks up a localized string similar to Feature added to profile.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ProfileChanged_FeatureRemoved">
+            <summary>
+              Looks up a localized string similar to Feature removed from profile.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ProfileChanged_MaxUsersModified">
+            <summary>
+              Looks up a localized string similar to Max Users of profile changed.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_ProfileChanged_NameModified">
+            <summary>
+              Looks up a localized string similar to Profile name changed.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Role_ActiveCalls_Name">
+            <summary>
+              Looks up a localized string similar to Active Calls.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Role_Administrator_Name">
+            <summary>
+              Looks up a localized string similar to Administrator.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Role_All_Name">
+            <summary>
+              Looks up a localized string similar to All.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Role_BackofficeAdministrator_Name">
+            <summary>
+              Looks up a localized string similar to Backoffice Administrator.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Role_InstallAdministrator_Name">
+            <summary>
+              Looks up a localized string similar to Installation Administrator.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Role_IpPbxUser_Name">
+            <summary>
+              Looks up a localized string similar to IpPbxUser.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Role_UserAdministratorR0_Name">
+            <summary>
+              Looks up a localized string similar to User Administrator Read Only.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_Role_UserAdministratorRW_Name">
+            <summary>
+              Looks up a localized string similar to User Administrator.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SClFeatureOptionPackSwyxMonitor_Desc">
+            <summary>
+              Looks up a localized string similar to SwyxMonitor allows the administrator to activate &quot;Permanent Call Recording&quot; for the User. In general all calls can be recorded automatically that are conducted by the User to and from a SwyxIt! or to and from external through certain types of Trunks. Furthermore the feature allows a supervisor to intrude calls of the User (when using SwyxIt!) to monitor the conversation..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SClFeatureOptionPackSwyxMonitor_Name">
+            <summary>
+              Looks up a localized string similar to SwyxMonitor.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SERVERROOTFOLDER">
+            <summary>
+              Looks up a localized string similar to Data.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SETUP_CHECK_DB">
+            <summary>
+              Looks up a localized string similar to Checking database configuration.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SETUP_CREATE_DB">
+            <summary>
+              Looks up a localized string similar to Create.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SETUP_CREATE_DB_SCHEMA">
+            <summary>
+              Looks up a localized string similar to Creating tables.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SETUP_DB">
+            <summary>
+              Looks up a localized string similar to Database Setup.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SETUP_INIT_DB">
+            <summary>
+              Looks up a localized string similar to Configuring database.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SETUP_WRITE_CONFIG">
+            <summary>
+              Looks up a localized string similar to Writing configuration.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SYSTEMNUMBERPROFILEFILENAME">
+            <summary>
+              Looks up a localized string similar to NumberFormatProfiles.config.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_SYSTEMPROVIDERPROFILEFILENAME">
+            <summary>
+              Looks up a localized string similar to ProviderProfiles.config.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_TrunkChanged_FaxChannelsModifed">
+            <summary>
+              Looks up a localized string similar to Number of fax channels changed.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_TrunkChanged_VoiceChannelsModifed">
+            <summary>
+              Looks up a localized string similar to Number of voice channels changed.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_UPDATED">
+            <summary>
+              Looks up a localized string similar to imported.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_UserChanged_NameModified">
+            <summary>
+              Looks up a localized string similar to Username changed.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_UserChanged_ProfileModified">
+            <summary>
+              Looks up a localized string similar to Profile of User changed.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_UserChanged_UserAdded">
+            <summary>
+              Looks up a localized string similar to User added.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_UserChanged_UserRemoved">
+            <summary>
+              Looks up a localized string similar to User removed.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_UserOperationCanceled">
+            <summary>
+              Looks up a localized string similar to Operation canceled by User..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_USERROOTFOLDER">
+            <summary>
+              Looks up a localized string similar to User.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_VALID_ALBINONI_LICENSE">
+            <summary>
+              Looks up a localized string similar to Valid HSW license found.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.IDS_VERSION">
+            <summary>
+              Looks up a localized string similar to _Master(neutral).
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.ItemNotValidForAction">
+            <summary>
+              Looks up a localized string similar to Item is not valid..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.NewEntryIsInvalid">
+            <summary>
+              Looks up a localized string similar to New entry is invalid: {0} is empty..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.NoDefaultLocationDefined">
+            <summary>
+              Looks up a localized string similar to There is no default location defined..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.NoLocationMatchesWithNumber">
+            <summary>
+              Looks up a localized string similar to No location matches to the number..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.OnlyCanonicalNumbersAllowed">
+            <summary>
+              Looks up a localized string similar to The number is not in canonical form..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.PortDataUserName">
+            <summary>
+              Looks up a localized string similar to TrunkDataUser.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.PortT38UserName">
+            <summary>
+              Looks up a localized string similar to TrunkT38User.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.PortVoiceUserName">
+            <summary>
+              Looks up a localized string similar to TrunkVoiceUser.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.UserFeatureProfileExceedMaximum">
+            <summary>
+              Looks up a localized string similar to The operation exceeds the maximum User limitation of a feature profile..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.UserHasNoScriptPath">
+            <summary>
+              Looks up a localized string similar to The User {0} has no ScriptPath..
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.UsersScriptDirectoryDoesNotExist">
+            <summary>
+              Looks up a localized string similar to The script directory of User {0} does not exist.The missing directory is: {1}.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.WSLayerVersionMismatch">
+            <summary>
+              Looks up a localized string similar to The client version is not supported by the server. Required Versions: {0} This version: {1}.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Properties.Resources.WSLayerVersionMismatchUnknown">
+            <summary>
+              Looks up a localized string similar to The client version is not supported by this server..
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Security.IpPbxWCFHeaderData">
+            <summary>
+            This class provides the custom information that will be exchanged between 
+            client and server using the Headers.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Security.RC4Engine">
+            <summary>
+            Summary description for RC4Engine.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Security.RC4Engine.Encrypt">
+            <summary>
+            Encript InClear Text using RC4 method using EncriptionKey
+            Put the result into CryptedText 
+            </summary>
+            <returns>true if success, else false</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Security.RC4Engine.EncryptData">
+            <summary>
+            Encript InClearData using RC4 method using EncriptionKey
+            Put the result into CryptedData 
+            </summary>
+            <returns>true if success, else false</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Security.RC4Engine.Decrypt">
+            <summary>
+            Decript CryptedText into InClearText using EncriptionKey
+            </summary>
+            <returns>true if success else false</returns>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Security.RC4Engine.EncryptionKey">
+            <summary>
+            Get or set Encryption Key
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Security.SecurityHelper">
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Security.SRandomPassword">
+            <summary>
+            This class can generate random passwords, which do not include ambiguous 
+            characters, such as I, l, and 1. The generated password will be made of
+            7-bit ASCII symbols. Every four characters will include one lower case
+            character, one upper case character, one number, and one special symbol
+            (such as '%') in a random order. The password will always start with an
+            alpha-numeric character; it will not start with a special symbol (we do
+            this because some back-end systems do not like certain special
+            characters in the first position).
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Security.SRandomPassword.Generate">
+            <summary>
+            Generates a random password.
+            </summary>
+            <returns>
+            Randomly generated password.
+            </returns>
+            <remarks>
+            The length of the generated password will be determined at
+            random. It will be no shorter than the minimum default and
+            no longer than maximum default.
+            </remarks>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Security.SRandomPassword.Generate(System.Int32)">
+            <summary>
+            Generates a random password of the exact length.
+            </summary>
+            <param name="length">
+            Exact password length.
+            </param>
+            <returns>
+            Randomly generated password.
+            </returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Security.SRandomPassword.Generate(System.Int32,System.Int32)">
+            <summary>
+            Generates a random password.
+            </summary>
+            <param name="minLength">
+            Minimum password length.
+            </param>
+            <param name="maxLength">
+            Maximum password length.
+            </param>
+            <returns>
+            Randomly generated password.
+            </returns>
+            <remarks>
+            The length of the generated password will be determined at
+            random and it will fall with the range determined by the
+            function parameters.
+            </remarks>
+        </member>
+        <member name="T:SWConfigDataSharedLib.SystemVersion">
+            <summary>
+            Base class for managing the version of the CDS.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.DBLayerVersion">
+            <summary>
+            The version class of the database schema.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.DBLayerVersion.#ctor(System.Int32,System.Int32)">
+            <summary>
+            constructor
+            </summary>
+            <param name="major">Major part of the version.</param>
+            <param name="minor">Minor part of the version.</param>
+        </member>
+        <member name="P:SWConfigDataSharedLib.DBLayerVersion.RequiredDBSchemaVersion">
+            <summary>
+            Gets the required database schema. If the existing version mismatch with this version the CDS Service will not start.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.DBLayerVersion.RequiredReportDBSchemaVersion">
+            <summary>
+            Gets the required database schema of the reporting database. If the existing version mismatch with this version the CDS Report Service will not start.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.WSLayerVersion">
+            <summary>
+            The version class of the webservice layer.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.WSLayerVersion.#ctor(System.Int32,System.Int32,SWConfigDataSharedLib.DBLayerVersion)">
+            <summary>
+            constructor
+            </summary>
+            <param name="major">Major part of the version.</param>
+            <param name="minor">Minor part of the version.</param>
+            <param name="dbLayerVersion">The DBLayerVersion</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.WSLayerVersion.getBindingPathFragment">
+            <summary>
+            Retrieves fragment of Path used by IpPbxCDSService
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:SWConfigDataSharedLib.WSLayerVersion.DBLayerVersion">
+            <summary>
+            Gets the DBLayerVersion
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteConfigException">
+            <summary>
+            
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SConfigException">
+            <summary>
+            ConfigException is thrown on failures in the system configuration of the CDS itself.
+            The message will never be localized.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SConfigException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SConfigException.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="Localized">Localized status of message</param>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteArgumentException">
+            <summary>
+            One or more parameter of a call is insufficient. 
+            </summary>
+            <remarks>This Class will be marshalled by SSoapException. It is usable in client and server context.</remarks>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SArgumentException">
+            <summary>
+            Exception indicating that one or more parameter is insufficient. 
+            The message can be localized.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SArgumentException.#ctor(System.String)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SArgumentException.#ctor(System.String,System.Boolean)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+            <param name="Localized">Is message localized</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SArgumentException.#ctor(SWConfigDataSharedLib.Exceptions.SMessageResources,System.Object[])">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="MessageResource"></param>
+            <param name="paramters"></param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SArgumentException.#ctor(System.String,System.Exception)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SArgumentException.#ctor(System.String,System.Exception,System.Boolean)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+            <param name="Localized">Is message localized</param>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SLocalizedMessage">
+            <summary>
+            
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteSecurityAccessException">
+            <summary>
+            
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteSecurityException">
+            <summary>
+            Transport class of SSSecurityExecption
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SRemoteSecurityException.#ctor">
+            <summary>
+            standard constructor
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SSecurityAccessException">
+            <summary>
+            If an user authentication or authorization fails, this kind of exception will be raised.
+            All messages will be localized. 
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SSecurityException">
+            <summary>
+            Exception handles with security issues except of authentication and authorization.
+            The message can be localized.
+            </summary>
+            <remarks>This Class will be marshalled by SSoapException. It is usable in client and server context.</remarks>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSecurityException.#ctor(SWConfigDataSharedLib.Exceptions.SRemoteSecurityException)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="ex">Transport class</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSecurityException.#ctor(System.String)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSecurityException.#ctor(System.String,System.Boolean)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+            <param name="localized">True id message is localized</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSecurityException.#ctor(SWConfigDataSharedLib.Exceptions.SMessageResources,System.Object[])">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+            <param name="localized">True id message is localized</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSecurityException.#ctor(System.String,System.Exception)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+            <param name="innerException">An inner exeption</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSecurityException.#ctor(System.String,System.Exception,System.Boolean)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+            <param name="innerException">An inner exeption</param>
+            <param name="localized">True id message is localized</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSecurityAccessException.#ctor(SWConfigDataSharedLib.Exceptions.SRemoteSecurityAccessException)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSecurityAccessException.#ctor(SWConfigDataSharedLib.Exceptions.SSecurityAccessException.AccessErr,SWConfigDataSharedLib.Exceptions.SMessageResources,System.Object[])">
+            <summary>
+            Standard constructor with message from resource
+            </summary>
+            <param name="errorCode"></param>
+            <param name="MessageResources"></param>
+            <param name="parameters"></param>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SSecurityAccessException.ErrorCode">
+            <summary>
+            Gets the access error type
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SSecurityAccessException.AccessErr">
+            <summary>
+            Type of error
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SSecurityAccessException.AccessErr.AuthorisationFailed">
+            <summary>
+            Authorisation failed.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SSecurityAccessException.AccessErr.AuthenticationFailed">
+            <summary>
+            User could not be identified.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SSecurityAccessException.AccessErr.SecureConnectionFailed">
+            <summary>
+            Verifying of the message security failed.
+            A common reason for this is a time difference between server and client
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SSoapException">
+            <summary>
+            Summary description for SSoapException.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.SSoapException.baseException">
+            <summary>
+            The Exception to marshall and unmarshall
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSoapException.#ctor(SWConfigDataSharedLib.Exceptions.SBaseException,System.Web.Services.WebService)">
+            <summary>
+            Constructs SSoapException 
+            </summary>
+            <param name="ex">SBaseException to marshall into the SSoapException</param>
+            <param name="uri"></param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSoapException.#ctor(System.Exception,System.Web.Services.WebService)">
+            <summary>
+            Constructs SSoapException 
+            </summary>
+            <param name="ex">SBaseException to marshall into the SSoapException</param>
+            <param name="uri"></param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSoapException.#ctor(SWConfigDataSharedLib.Exceptions.SDBConcurrencyException,System.Web.Services.WebService)">
+            <summary>
+            Constructs SSoapException 
+            </summary>
+            <param name="ex">SBaseException to marshall into the SSoapException</param>
+            <param name="uri"></param>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteSoapSecurityException">
+            <summary>
+            Transport class of SSecurityException
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SRemoteSoapSecurityException.#ctor">
+            <summary>
+            Standard contructor
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SRemoteSoapSecurityException.#ctor(System.String)">
+            <summary>
+            contructor with message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SSoapSecurityException">
+            <summary>
+            Will be thrown by custom classes in the wse context. Will now longer be used since 6.10.
+            The message will never be localized.
+            </summary>
+            <remarks>This Class will be marshalled by SSoapException. It is usable in client and server context.</remarks>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSoapSecurityException.#ctor(SWConfigDataSharedLib.Exceptions.SRemoteSoapSecurityException)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="ex">Transport class</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSoapSecurityException.#ctor(System.String)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSoapSecurityException.#ctor(System.String,System.Exception)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+            <param name="innerException">An inner exception</param>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.SSoapSecurityException.Localized">
+            <summary>
+            True if message is localized.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteSystemException">
+            <summary>
+            Unspecified CDS exception
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SSystemException">
+            <summary>
+            Unspecified CDS exception
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSystemException.#ctor(SWConfigDataSharedLib.Exceptions.SRemoteSystemException)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSystemException.#ctor(System.String)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSystemException.#ctor(System.String,System.Boolean)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSystemException.#ctor(System.String,System.Exception)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSystemException.#ctor(System.String,System.Exception,System.Boolean)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteUserDbException">
+            <summary>
+            Exception form database
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.UserDbException">
+            <summary>
+            Exception caused by SQL failure. All SQL failures expect concurrency violations will be handled with this exception. 
+            An additionally ErrorCode is provided. The language of the messages is the language of the SQL Server. The excpetion contains
+            also the ErrorNumber and the ErrorCode (HResult) from the original SQLException.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.errCode">
+            <summary>
+            Error Code
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.UserDbException.#ctor(SWConfigDataSharedLib.Exceptions.UserDbException.Err,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ErrCode">ErrorCode.</param>
+            <param name="message">Additional message.</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.UserDbException.#ctor(SWConfigDataSharedLib.Exceptions.UserDbException.Err,System.Data.SqlClient.SqlException)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ErrCode">ErrorCode.</param>
+            <param name="message">Additional message.</param>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.UserDbException.ErrorCode">
+            <summary>
+            Returns the error code.
+            </summary>
+            <returns>the error code</returns>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.UserDbException.ErrorNumber">
+            <summary>
+            Returns the error number.
+            </summary>
+            <returns>the error code</returns>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.UserDbException.HResult">
+            <summary>
+            Returns the hresult value.
+            </summary>
+            <returns>the error code</returns>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Exceptions.UserDbException.MessageSummary">
+            <summary>
+            Creates a message including the ErrorCode as string and the additional message.
+            </summary>
+            <returns>message</returns>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.UserDbException.Err">
+            <summary>
+            Error Code
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.Success">
+            <summary>
+            everything ok
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.Failure">
+            <summary>
+            something failed
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.OutOfMemory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.AccessDenied">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.InvalidArg">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.ConstraintError">
+            <summary>
+            operation failed due to some database contraints
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.DatabaseNotFound">
+            <summary>
+            database not found at SQL server
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.ConnectionFailed">
+            <summary>
+             connection to SQL server failed, maybe server not found
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.DataLocked">
+            <summary>
+            Table of entry locked.
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.DataIntegrityError">
+            <summary>
+            column integrity violated, e.g. setting non-nullable column to Null
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.DataOverflow">
+            <summary>
+            field data to large to fit in internal variable
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.EndOfFile">
+            <summary>
+            end of records reached
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.BufferToSmall">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.DatabaseSchemaError">
+            <summary>
+             database schema inconsistant with this software
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.NotFound">
+            <summary>
+            not found
+            </summary>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Exceptions.UserDbException.Err.MaxErr">
+            <summary>
+            obsolet
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Globalization.TimeZoneInformation">
+            <summary>
+            Information about a time zone
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.FromIndex(System.Int32)">
+            <summary>
+            Get a TimeZoneInformation for a supplied index.
+            </summary>
+            <param name="index">The time zone to find.</param>
+            <returns>The corresponding TimeZoneInformation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the index is not found.</exception>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.FromSystemTimeZoneID(System.String)">
+            <summary>
+            Get a TimeZoneInformation for a supplied index.
+            </summary>
+            <param name="SystemTimeZoneID">The time zone to find. The id is the standard name</param>
+            <returns>The corresponding TimeZoneInformation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the index is not found.</exception>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.FromStandardName(System.String)">
+            <summary>
+            Get a TimeZoneInformation for a supplied index.
+            </summary>
+            <param name="SystemTimeZoneID">The time zone to find. The id is the standard name</param>
+            <returns>The corresponding TimeZoneInformation.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the index is not found.</exception>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.EnumZones">
+            <summary>
+            Enumerate the available time zones
+            </summary>
+            <returns>The list of known time zones</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.GetAllTimeZoneInformationSortedByBIAS">
+            <summary>
+            Retrieves a list of all system time zones sort by bias.
+            </summary>
+            <returns>array of time zones</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.ReadTZIForYear(System.String,System.Nullable{System.Int32})">
+            <summary>
+            Get the default adjustment role or the adjustment role for one year
+            </summary>
+            <param name="id">Time Zone ID (registry key under ..\CurrentVersion\Time Zones)</param>
+            <param name="Year">Read adjustment role for this year or the default role when this value is null</param>
+            <remarks>
+            There is no .NET 3.5 function to read the TZI.
+            Access the registry to read the required values.
+            </remarks>
+            <returns>Returns a TZI struct or null when no adjustment role exists</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.ToString">
+            <summary>
+            Retrieves string representation of the time zone.
+            </summary>
+            <returns>String representation.</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.hasDayLightTime">
+            <summary>
+            Retrieves if the time zone has a day light saving time.
+            </summary>
+            <returns>True is a day light saving time exists.</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.FromUniversalTime(System.DateTime)">
+            <summary>
+            Convert a time interpreted as UTC to a time in this time zone.
+            </summary>
+            <param name="utc">The UTC time to convert.</param>
+            <returns>The corresponding local time in this zone.</returns>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.FromUniversalTime(System.Int32,System.DateTime)">
+            <summary>
+            Convert a time from UTC to the time zone with the supplied index.
+            </summary>
+            <param name="index">The time zone index.</param>
+            <param name="utc">The time to convert.</param>
+            <returns>The converted time.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the index is not found.</exception>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.ToUniversalTime(System.DateTime)">
+            <summary>
+            Convert a time interpreted as a local time in this zone to the equivalent UTC.
+            Note that there may be different possible interpretations at the daylight
+            time boundaries.
+            </summary>
+            <param name="local">The local time to convert.</param>
+            <returns>The corresponding UTC.</returns>
+            <exception cref="T:System.NotSupportedException">Thrown if the method failed due to missing platform support.</exception>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.ToUniversalTime(System.Int32,System.DateTime)">
+            <summary>
+            Convert a time from the time zone with the supplied index to UTC.
+            </summary>
+            <param name="index">The time zone index.</param>
+            <param name="utc">The time to convert.</param>
+            <returns>The converted time.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown if the index is not found.</exception>
+            <exception cref="T:System.NotSupportedException">Thrown if the method failed due to missing platform support.</exception>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.CurrentTimeZonesStandardName">
+            <summary>
+            Gets the standard name of the current timezone. This name can be localized!
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.CurrentTimeZonesDayLightName">
+            <summary>
+            Gets the day light saving name of the current timezone
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.CurrentTimeZone">
+            <summary>
+            Get the currently selected time zone
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.Name">
+            <summary>
+            The zone's name.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.DisplayName">
+            <summary>
+            The zone's display name, e.g. '(GMT) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London'.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.Index">
+            <summary>
+            The zone's index. No obvious pattern.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.StandardName">
+            <summary>
+            The zone's name during 'standard' time (not daylight savings).
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.DaylightName">
+            <summary>
+            The zone's name during daylight savings time.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.StandardDate">
+            <summary>
+            Gets the next beginning date of the current or next standard time period.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.DayLightDate">
+            <summary>
+            Gets the next beginning date of the current or next day light saving time period.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.SpecialRuleForCurrentYear">
+            <summary>
+            True, if there is a special rule for the current year.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.SpecialRuleForLastYear">
+            <summary>
+            True, if there is a special rule for the last year.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.SpecialRuleForNextYear">
+            <summary>
+            True, if there is a special rule for the next year.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.Bias">
+            <summary>
+            The offset from UTC. Local = UTC + Bias.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.StandardBias">
+            <summary>
+            The offset from UTC during standard time.
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Globalization.TimeZoneInformation.DaylightBias">
+            <summary>
+            The offset from UTC during daylight time.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Globalization.TimeZoneInformation.BiasComparer">
+            <summary>Should be internal</summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Globalization.TimeZoneInformation.SYSTEMTIME">
+            <summary>
+            The standard Windows SYSTEMTIME structure.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Globalization.TimeZoneInformation.TZI">
+            <summary>
+            The layout of the Tzi value in the registry.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Globalization.TimeZoneInformation.TIME_ZONE_INFORMATION">
+            <summary>
+            The standard Win32 TIME_ZONE_INFORMATION structure.
+            Thanks to www.pinvoke.net.
+            </summary>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Globalization.TimeZoneInformation.NativeMethods">
+            <summary>
+            A container for P/Invoke declarations.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Globalization.TimeZoneInformation.NativeMethods.TzSpecificLocalTimeToSystemTime(SWConfigDataSharedLib.Globalization.TimeZoneInformation.TIME_ZONE_INFORMATION@,SWConfigDataSharedLib.Globalization.TimeZoneInformation.SYSTEMTIME@,SWConfigDataSharedLib.Globalization.TimeZoneInformation.SYSTEMTIME@)">
+            <summary>
+            Convert a local time to UTC, using the supplied time zone information.
+            Windows XP and Server 2003 and later only.
+            </summary>
+            <param name="lpTimeZone">The time zone to use.</param>
+            <param name="lpLocalTime">The local time to convert.</param>
+            <param name="lpUniversalTime">The resultant time in UTC.</param>
+            <returns>true if successful, false otherwise.</returns>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SRemoteSystemCodeException">
+            <summary>
+            
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Exceptions.SSystemCodeException">
+            <summary>
+            Indicates a system failure caused by incorrect program code.
+            The message will never be localized.
+            </summary>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSystemCodeException.#ctor(SWConfigDataSharedLib.Exceptions.SRemoteSystemCodeException)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSystemCodeException.#ctor(System.String)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Exceptions.SSystemCodeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Standard constructor
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Security.RC4_KEY">
+            <summary>
+            
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Security.SCrypt">
+            <summary>
+            
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:Subtext.Framework.Threading.ManagedThreadPool">
+            <summary>Managed thread pool.</summary>
+        </member>
+        <member name="F:Subtext.Framework.Threading.ManagedThreadPool._maxWorkerThreads">
+            <summary>Maximum number of threads the thread pool has at its disposal.</summary>
+        </member>
+        <member name="F:Subtext.Framework.Threading.ManagedThreadPool._waitingCallbacks">
+            <summary>Queue of all the callbacks waiting to be executed.</summary>
+        </member>
+        <member name="F:Subtext.Framework.Threading.ManagedThreadPool._workerThreadNeeded">
+            <summary>
+            Used to signal that a worker thread is needed for processing.  Note that multiple
+            threads may be needed simultaneously and as such we use a semaphore instead of
+            an auto reset event.
+            </summary>
+        </member>
+        <member name="F:Subtext.Framework.Threading.ManagedThreadPool._workerThreads">
+            <summary>List of all worker threads at the disposal of the thread pool.</summary>
+        </member>
+        <member name="F:Subtext.Framework.Threading.ManagedThreadPool._inUseThreads">
+            <summary>Number of threads currently active.</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.ManagedThreadPool.#cctor">
+            <summary>Initialize the thread pool.</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.ManagedThreadPool.QueueUserWorkItem(System.Threading.WaitCallback)">
+            <summary>Queues a user work item to the thread pool.</summary>
+            <param name="callback">
+            A WaitCallback representing the delegate to invoke when the thread in the 
+            thread pool picks up the work item.
+            </param>
+        </member>
+        <member name="M:Subtext.Framework.Threading.ManagedThreadPool.QueueUserWorkItem(System.Threading.WaitCallback,System.Object)">
+            <summary>Queues a user work item to the thread pool.</summary>
+            <param name="callback">
+            A WaitCallback representing the delegate to invoke when the thread in the 
+            thread pool picks up the work item.
+            </param>
+            <param name="state">
+            The object that is passed to the delegate when serviced from the thread pool.
+            </param>
+        </member>
+        <member name="M:Subtext.Framework.Threading.ManagedThreadPool.EmptyQueue">
+            <summary>Empties the work queue of any queued work items.</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.ManagedThreadPool.TraceStatus">
+            <summary>Traces the status.</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.ManagedThreadPool.ProcessQueuedItems">
+            <summary>A thread worker function that processes items from the work queue.</summary>
+        </member>
+        <member name="P:Subtext.Framework.Threading.ManagedThreadPool.MaxThreads">
+            <summary>Gets the number of threads at the disposal of the thread pool.</summary>
+        </member>
+        <member name="P:Subtext.Framework.Threading.ManagedThreadPool.ActiveThreads">
+            <summary>Gets the number of currently active threads in the thread pool.</summary>
+        </member>
+        <member name="P:Subtext.Framework.Threading.ManagedThreadPool.WaitingCallbacks">
+            <summary>Gets the number of callback delegates currently waiting in the thread pool.</summary>
+        </member>
+        <member name="T:Subtext.Framework.Threading.ManagedThreadPool.WaitingCallback">
+            <summary>Used to hold a callback delegate and the state for that delegate.</summary>
+        </member>
+        <member name="F:Subtext.Framework.Threading.ManagedThreadPool.WaitingCallback._callback">
+            <summary>Callback delegate for the callback.</summary>
+        </member>
+        <member name="F:Subtext.Framework.Threading.ManagedThreadPool.WaitingCallback._state">
+            <summary>State with which to call the callback delegate.</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.ManagedThreadPool.WaitingCallback.#ctor(System.Threading.WaitCallback,System.Object)">
+            <summary>Initialize the callback holding object.</summary>
+            <param name="callback">Callback delegate for the callback.</param>
+            <param name="state">State with which to call the callback delegate.</param>
+        </member>
+        <member name="P:Subtext.Framework.Threading.ManagedThreadPool.WaitingCallback.Callback">
+            <summary>Gets the callback delegate for the callback.</summary>
+        </member>
+        <member name="P:Subtext.Framework.Threading.ManagedThreadPool.WaitingCallback.State">
+            <summary>Gets the state with which to call the callback delegate.</summary>
+        </member>
+        <member name="T:Subtext.Framework.Threading.Semaphore">
+            <summary>Implementation of Dijkstra's PV Semaphore based on the Monitor class.</summary>
+        </member>
+        <member name="F:Subtext.Framework.Threading.Semaphore._count">
+            <summary>The number of units alloted by this semaphore.</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.Semaphore.#ctor">
+            <summary> Initialize the semaphore as a binary semaphore.</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.Semaphore.#ctor(System.Int32)">
+            <summary> Initialize the semaphore as a counting semaphore.</summary>
+            <param name="count">Initial number of threads that can take out units from this semaphore.</param>
+            <exception cref="T:System.ArgumentException">Throws if the count argument is less than 1.</exception>
+        </member>
+        <member name="M:Subtext.Framework.Threading.Semaphore.AddOne">
+            <summary>V the semaphore (add 1 unit to it).</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.Semaphore.WaitOne">
+            <summary>P the semaphore (take out 1 unit from it).</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.Semaphore.P">
+            <summary>P the semaphore (take out 1 unit from it).</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.Semaphore.V">
+            <summary>V the semaphore (add 1 unit to it).</summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.Semaphore.Reset(System.Int32)">
+            <summary>Resets the semaphore to the specified count.  Should be used cautiously.</summary>
+        </member>
+        <member name="T:Subtext.Framework.Threading.TimedLock">
+            <summary>
+            Class provides a nice way of obtaining a lock that will time out 
+            with a cleaner syntax than using the whole Monitor.TryEnter() method.
+            </summary>
+            <remarks>
+            Adapted from Ian Griffiths article http://www.interact-sw.co.uk/iangblog/2004/03/23/locking 
+            and incorporating suggestions by Marek Malowidzki as outlined in this blog post 
+            http://www.interact-sw.co.uk/iangblog/2004/05/12/timedlockstacktrace
+            </remarks>
+            <example>
+            Instead of:
+            <code>
+            lock(obj)
+            {
+            	//Thread safe operation
+            }
+            
+            do this:
+            
+            using(TimedLock.Lock(obj))
+            {
+            	//Thread safe operations
+            }
+            
+            or this:
+            
+            try
+            {
+            	TimedLock timeLock = TimedLock.Lock(obj);
+            	//Thread safe operations
+            	timeLock.Dispose();
+            }
+            catch(LockTimeoutException e)
+            {
+            	Console.WriteLine("Couldn't get a lock!");
+            	StackTrace otherStack = e.GetBlockingThreadStackTrace(5000);
+            	if(otherStack == null)
+            	{
+            		Console.WriteLine("Couldn't get other stack!");
+            	}
+            	else
+            	{
+            		Console.WriteLine("Stack trace of thread that owns lock!");
+            	}
+            	
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Subtext.Framework.Threading.TimedLock.Lock(System.Object)">
+            <summary>
+            Attempts to obtain a lock on the specified object for up 
+            to 10 seconds.
+            </summary>
+            <param name="o"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Subtext.Framework.Threading.TimedLock.Lock(System.Object,System.TimeSpan)">
+            <summary>
+            Attempts to obtain a lock on the specified object for up to 
+            the specified timeout.
+            </summary>
+            <param name="o"></param>
+            <param name="timeout"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Subtext.Framework.Threading.TimedLock.Dispose">
+            <summary>
+            Disposes of this lock.
+            </summary>
+        </member>
+        <member name="T:Subtext.Framework.Threading.LockTimeoutException">
+            <summary>
+            Thrown when a lock times out.
+            </summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.LockTimeoutException.#ctor">
+            <summary>
+            Creates a new <see cref="T:Subtext.Framework.Threading.LockTimeoutException"/> instance.
+            </summary>
+        </member>
+        <member name="M:Subtext.Framework.Threading.LockTimeoutException.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Subtext.Framework.Threading.LockTimeoutException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="M:Subtext.Framework.Threading.LockTimeoutException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Subtext.Framework.Threading.LockTimeoutException.ToString">
+            <summary>
+            Returns a string representation of the exception.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Tracing.TraceModules">
+            <summary>
+            List of CDS trace modules (alphabetical sorted)
+            </summary>
+            <remarks>When adding a new module, please extend the TraceModuleList Dictionary too</remarks>
+        </member>
+        <member name="F:SWConfigDataSharedLib.Tracing.TraceModuleDescriptions.traceModuleList">
+            <summary>
+            Collection of trace modules and module descriptions 
+            </summary>
+        </member>
+        <member name="P:SWConfigDataSharedLib.Tracing.TraceModuleDescriptions.Item(SWConfigDataSharedLib.Tracing.TraceModules)">
+            <summary>.
+            Get a textual description of a trace module. 
+            For unknown module the module name is returned.
+            </summary>
+            <param name="traceModule">The module to search for</param>
+            <returns>Returns the description of the given module</returns>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Tracing.STraceInfo">
+            <exclude/>
+        </member>
+        <member name="T:SWConfigDataSharedLib.Tracing.STrace">
+            <exclude/>
+        </member>
+        <member name="M:SWConfigDataSharedLib.Tracing.STrace.GetCurrentMethodName">
+            <summary>
+            Get the name of the current function.
+            </summary>
+            <returns>Return name of method</returns>
+        </member>
+        <member name="T:SWConfigDataSharedLib.WCFUtils.SCustomHeaderData">
+            <summary>
+            This class provides the custom information that will be exchanged between 
+            client and server using the Headers.
+            </summary>
+        </member>
+    </members>
+</doc>

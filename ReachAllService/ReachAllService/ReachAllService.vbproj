@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AF145C9F-E9FB-4870-AB8E-CB7602D8D404}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <StartupObject>ReachAllService.ReachAllService</StartupObject>
+    <RootNamespace>ReachAllService</RootNamespace>
+    <AssemblyName>ReachAllService</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Console</MyType>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>67FDBA839D221E0DF9414687A43C5000D47AA779</ManifestCertificateThumbprint>
+    <ManifestKeyFile>ReachAllService_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <PublishUrl>http://localhost/ReachAllService/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>ReachAllService.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>ReachAllService.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="IpPbxCDSClientLib, Version=6.20.0.430, Culture=neutral, PublicKeyToken=cf78dfa0a74454f8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Wallboard Viewer\Wallboard Viewer\bin\Release\IpPbxCDSClientLib.dll</HintPath>
+    </Reference>
+    <Reference Include="IpPbxCDSSharedLib, Version=6.20.0.430, Culture=neutral, PublicKeyToken=cf78dfa0a74454f8, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Wallboard Viewer\Wallboard Viewer\bin\Release\IpPbxCDSSharedLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ActiveCalls.vb">
+      <Link>ActiveCalls.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\AddRecordingsResultsClass.vb">
+      <Link>AddRecordingsResultsClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\AdvancedReportGenerator.vb">
+      <Link>AdvancedReportGenerator.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\AgentEntityClass.vb">
+      <Link>AgentEntityClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\AgentReport.vb">
+      <Link>AgentReport.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\AgentStatus.vb">
+      <Link>AgentStatus.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\AgentStatusSettings.vb">
+      <Link>AgentStatusSettings.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ApplicationAndServiceShared.vb">
+      <Link>ApplicationAndServiceShared.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\BaseObjectClass.vb">
+      <Link>BaseObjectClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\BitmapClass.vb">
+      <Link>BitmapClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CallForward.vb">
+      <Link>CallForward.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CallForwardCommon.vb">
+      <Link>CallForwardCommon.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CallForwardSettings.vb">
+      <Link>CallForwardSettings.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CallRecordingFilenameFormatClass.vb">
+      <Link>CallRecordingFilenameFormatClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CallRecordingManager.vb">
+      <Link>CallRecordingManager.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CallRecordingManagerDWM.vb">
+      <Link>CallRecordingManagerDWM.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CallRecordingSecurity.vb">
+      <Link>CallRecordingSecurity.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CDRSettings.vb">
+      <Link>CDRSettings.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CDRUtils.vb">
+      <Link>CDRUtils.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Chart3DObjectClass.vb">
+      <Link>Chart3DObjectClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ChartJSObjectClass.vb">
+      <Link>ChartJSObjectClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ChartObjectClass.vb">
+      <Link>ChartObjectClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ColourClass.vb">
+      <Link>ColourClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\CompositeSQLClass.vb">
+      <Link>CompositeSQLClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\DataAndRefClass.vb">
+      <Link>DataAndRefClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\DatabaseAccess.vb">
+      <Link>DatabaseAccess.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\DataSetUtils.vb">
+      <Link>DataSetUtils.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\DateAndTimeClass.vb">
+      <Link>DateAndTimeClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\DictionaryClass.vb">
+      <Link>DictionaryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\DirectoryClass.vb">
+      <Link>DirectoryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\DirectoryGroupEntryClass.vb">
+      <Link>DirectoryGroupEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\DirectoryInternalNumberClass.vb">
+      <Link>DirectoryInternalNumberClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\DirectoryUserEntryClass.vb">
+      <Link>DirectoryUserEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Email.vb">
+      <Link>Email.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\EmailSettings.vb">
+      <Link>EmailSettings.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Erlang.vb">
+      <Link>Erlang.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\EventTableClass.vb">
+      <Link>EventTableClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\EventTableEntryClass.vb">
+      <Link>EventTableEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ExtraDataClass.vb">
+      <Link>ExtraDataClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\FormatCSVModule.vb">
+      <Link>FormatCSVModule.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\FormatDrillDownFourModule.vb">
+      <Link>FormatDrillDownFourModule.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\FormatGraphModule.vb">
+      <Link>FormatGraphModule.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\FormatHTMLModule.vb">
+      <Link>FormatHTMLModule.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ForwardClass.vb">
+      <Link>ForwardClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\GenerateDataModule.vb">
+      <Link>GenerateDataModule.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\GenerateDataVerbatimAllDrilldown.vb">
+      <Link>GenerateDataVerbatimAllDrilldown.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Globals.vb">
+      <Link>Globals.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\GraphStripClass.vb">
+      <Link>GraphStripClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\GraphStripElementClass.vb">
+      <Link>GraphStripElementClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\GraphStripMeterClass.vb">
+      <Link>GraphStripMeterClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\GroupInfo.vb">
+      <Link>GroupInfo.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\GroupInfoSettings.vb">
+      <Link>GroupInfoSettings.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\GroupMappingEntryClass.vb">
+      <Link>GroupMappingEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\HTMLTableClass.vb">
+      <Link>HTMLTableClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Initialisation.vb">
+      <Link>Initialisation.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JobEntryClass.vb">
+      <Link>JobEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Jobs.vb">
+      <Link>Jobs.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JoinClass.vb">
+      <Link>JoinClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONArrayClass.vb">
+      <Link>JSONArrayClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONArrayValueClass.vb">
+      <Link>JSONArrayValueClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONBaseClass.vb">
+      <Link>JSONBaseClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONBaseValueClass.vb">
+      <Link>JSONBaseValueClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONNameValuePairClass.vb">
+      <Link>JSONNameValuePairClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONObjectClass.vb">
+      <Link>JSONObjectClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONObjectValueClass.vb">
+      <Link>JSONObjectValueClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONStringClass.vb">
+      <Link>JSONStringClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONStringValueClass.vb">
+      <Link>JSONStringValueClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\JSONUtilities.vb">
+      <Link>JSONUtilities.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\KeyGenerator.vb">
+      <Link>KeyGenerator.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\LabelMappingClass.vb">
+      <Link>LabelMappingClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ListOfEventTablesClass.vb">
+      <Link>ListOfEventTablesClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\LoginDetailsClass.vb">
+      <Link>LoginDetailsClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\LoginTime.vb">
+      <Link>LoginTime.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Logutil.vb">
+      <Link>Logutil.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\MappingsClass.vb">
+      <Link>MappingsClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Multisite.vb">
+      <Link>Multisite.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\MultisiteDirectoryClass.vb">
+      <Link>MultisiteDirectoryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\MultisiteDirectoryEntryClass.vb">
+      <Link>MultisiteDirectoryEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\MultisiteEntitySettingsEntryClass.vb">
+      <Link>MultisiteEntitySettingsEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\MultisiteSettingsEntry.vb">
+      <Link>MultisiteSettingsEntry.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\NameValuePairClass.vb">
+      <Link>NameValuePairClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\NameValuePairList.vb">
+      <Link>NameValuePairList.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\NewCallTypeWizardDataClass.vb">
+      <Link>NewCallTypeWizardDataClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\NewCallTypeWizardEntryClass.vb">
+      <Link>NewCallTypeWizardEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\NewColumnDataClass.vb">
+      <Link>NewColumnDataClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\NewFormatGraphModule.vb">
+      <Link>NewFormatGraphModule.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Options.vb">
+      <Link>Options.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\PairListClass.vb">
+      <Link>PairListClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\PCICompliance.vb">
+      <Link>PCICompliance.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\PrecompilerCreateData.vb">
+      <Link>PrecompilerCreateData.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\PrecompilerDataPairClass.vb">
+      <Link>PrecompilerDataPairClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\PrecompilerModule.vb">
+      <Link>PrecompilerModule.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\PrimaryQuery.vb">
+      <Link>PrimaryQuery.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Remote.vb">
+      <Link>Remote.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\RemoteOperations.vb">
+      <Link>RemoteOperations.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportCallTypeClass.vb">
+      <Link>ReportCallTypeClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportClass.vb">
+      <Link>ReportClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportColumnClass.vb">
+      <Link>ReportColumnClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportDescriptorClass.vb">
+      <Link>ReportDescriptorClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportDescriptorRowClass.vb">
+      <Link>ReportDescriptorRowClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportDrillDownColumnClass.vb">
+      <Link>ReportDrillDownColumnClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportEngineFour.vb">
+      <Link>ReportEngineFour.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportGenerator.vb">
+      <Link>ReportGenerator.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportGeneratorCommon.vb">
+      <Link>ReportGeneratorCommon.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportGeneratorX.vb">
+      <Link>ReportGeneratorX.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportKeyAspectClass.vb">
+      <Link>ReportKeyAspectClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportKeysClass.vb">
+      <Link>ReportKeysClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportListClass.vb">
+      <Link>ReportListClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportOutputSelectorClass.vb">
+      <Link>ReportOutputSelectorClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ReportOutputSelectorEntryClass.vb">
+      <Link>ReportOutputSelectorEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ResultsArrayClass.vb">
+      <Link>ResultsArrayClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\ScheduledJobClass.vb">
+      <Link>ScheduledJobClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Scheduler.vb">
+      <Link>Scheduler.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SectionEntryClass.vb">
+      <Link>SectionEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Security.vb">
+      <Link>Security.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SecurityEntryClass.vb">
+      <Link>SecurityEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SecurityListClass.vb">
+      <Link>SecurityListClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SelectorClass.vb">
+      <Link>SelectorClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SemiStringClass.vb">
+      <Link>SemiStringClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SevenSegmentDigitClass.vb">
+      <Link>SevenSegmentDigitClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SevenSegmentDisplayClass.vb">
+      <Link>SevenSegmentDisplayClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SOC.vb">
+      <Link>SOC.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SOCEntryClass.vb">
+      <Link>SOCEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SpliceDataClass.vb">
+      <Link>SpliceDataClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SQLComparisonClass.vb">
+      <Link>SQLComparisonClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SQLGroupByClass.vb">
+      <Link>SQLGroupByClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SQLOrderByClass.vb">
+      <Link>SQLOrderByClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SQLStatementClass.vb">
+      <Link>SQLStatementClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SQLUtils.vb">
+      <Link>SQLUtils.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\StringObjectClass.vb">
+      <Link>StringObjectClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\SwyxUsersSettings.vb">
+      <Link>SwyxUsersSettings.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\TaggedPairListClass.vb">
+      <Link>TaggedPairListClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\TaggedStringClass.vb">
+      <Link>TaggedStringClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Target.vb">
+      <Link>Target.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\TennantEntryClass.vb">
+      <Link>TennantEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\TennantListClass.vb">
+      <Link>TennantListClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Tennants.vb">
+      <Link>Tennants.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\TrunkUtilisation.vb">
+      <Link>TrunkUtilisation.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\UniqueStringFilterClass.vb">
+      <Link>UniqueStringFilterClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\UpdateConfig.vb">
+      <Link>UpdateConfig.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\UserInfoClass.vb">
+      <Link>UserInfoClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\Utilities.vb">
+      <Link>Utilities.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\VerbatimUtilities.vb">
+      <Link>VerbatimUtilities.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\WebColourClass.vb">
+      <Link>WebColourClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\WebColours.vb">
+      <Link>WebColours.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\WindowsPathClass.vb">
+      <Link>WindowsPathClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\WizardEntryClass.vb">
+      <Link>WizardEntryClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\XMLUtils.vb">
+      <Link>XMLUtils.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wallboard Viewer\Wallboard Viewer\XMLWriterClass.vb">
+      <Link>XMLWriterClass.vb</Link>
+    </Compile>
+    <Compile Include="..\..\Wav Converter\Wav Converter\WavFileClass.vb">
+      <Link>WavFileClass.vb</Link>
+    </Compile>
+    <Compile Include="GetUserByAddressWrapperModule.vb" />
+    <Compile Include="Local_Utilities.vb" />
+    <Compile Include="ProjectInstaller.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReachAllService.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReachAllService.resx">
+      <DependentUpon>ReachAllService.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="ReachAllService_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
+  <asmv1:assemblyIdentity name="ReachAllService.exe" version="1.0.0.0" publicKeyToken="c7a948384d5c0287" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="ReachAllService" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="ReachAllService.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="2.0.50727.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="WindowsBase" version="3.0.0.0" publicKeyToken="31bf3856ad364e35" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Xceed.Compression" version="3.7.8113.16100" publicKeyToken="BA83FF368B7563C6" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IpPbxCDSClientLib.dll" size="4313088">
+      <assemblyIdentity name="IpPbxCDSClientLib" version="8.1.0.661" publicKeyToken="CF78DFA0A74454F8" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>DxX8YZrY43dRQ9g3XxY6W7YWMyY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IpPbxCDSSharedLib.dll" size="192512">
+      <assemblyIdentity name="IpPbxCDSSharedLib" version="8.1.0.634" publicKeyToken="CF78DFA0A74454F8" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>nezZjbmFhRsWGlC43jObRnAJ6gA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IpPbxTracing.dll" size="24576">
+      <assemblyIdentity name="IpPbxTracing" version="1.0.0.0" publicKeyToken="CF78DFA0A74454F8" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>KPzPj3unZRFjsXHD/p5uhr6xq2Q=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IpPbxWin32.dll" size="57344">
+      <assemblyIdentity name="IpPbxWin32" version="1.0.0.3" publicKeyToken="CF78DFA0A74454F8" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>0l8MM21VAicxBcPinMtlzC5lGiU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReachAllService.exe" size="397312">
+      <assemblyIdentity name="ReachAllService" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>An3VwlCVuwQ/LJmb1/XuZqwMxA0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+<publisherIdentity name="CN=VMDEV\Ian" issuerKeyHash="38c9a5bd2e78cb4efe6ac7657c6cb0c189f519d3" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>sM8f1/H1OwKU4W7gOLzu5h/qonY=</DigestValue></Reference></SignedInfo><SignatureValue>FcjAm4KzFzxtrayGuwjV0koQ8mNsV4bodEcF/wD5yxtV9y6gBVROkx/95gDNa5DBFXHyCK89BkURH8gn0mNq1cwP1iNXbuWRh988SDCtcL2S28f8YqI/H65/yxBE7CQMqd5Mf/+UWVUXa9/lWh6IntK0vlSr0q+JQkTWvd/CQhI=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>s8Gsctn68znh36JsFLZu+ecpaKaWWr0wxnrNhRhkgsxU+md7o4ZBw7qkgGOwJ9vRfjiD3A6NgjYYIy5mI/Yc9TgTiI+ZbSSp4mNyeJ1KYZ/8P2gpGg/+oiqMZJ+eWXRfWA1SojFOZ+aVdiJsmXs+LCuk5qODMGnV5zqQfr81EIc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="76a2ea1fe6eebc38e06ee194023bf5f1d71fcfb0" Description="" Url=""><as:assemblyIdentity name="ReachAllService.exe" version="1.0.0.0" publicKeyToken="c7a948384d5c0287" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=VMDEV\Ian</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>FBhZbh+zF+0wVJ5Mcw7M5U0EaTY=</DigestValue></Reference></SignedInfo><SignatureValue>d+EakqhAZ5xincECIMu8VHl1oJFZWta7qZr/VqXOX3WM6Fvs5Bm1Jht9zVfSIRfIWp4DJqL0ZZ1llw+RM4tjHXkAaAQe7nPkXmalbF3j1IZtOK5QGVdHBNbG3xoyX1k90oBhBRRqvu59+Mk5FwutjwXxnEFmYGs8xJ8+KrPkVlE=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>s8Gsctn68znh36JsFLZu+ecpaKaWWr0wxnrNhRhkgsxU+md7o4ZBw7qkgGOwJ9vRfjiD3A6NgjYYIy5mI/Yc9TgTiI+ZbSSp4mNyeJ1KYZ/8P2gpGg/+oiqMZJ+eWXRfWA1SojFOZ+aVdiJsmXs+LCuk5qODMGnV5zqQfr81EIc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBtTCCASKgAwIBAgIQWc9algQwsbdCyIyVZXEhMDAJBgUrDgMCHQUAMB0xGzAZBgNVBAMeEgBWAE0ARABFAFYAXABJAGEAbjAeFw0xNTExMjQyMzQxNTFaFw0xNjExMjQwNTQxNTFaMB0xGzAZBgNVBAMeEgBWAE0ARABFAFYAXABJAGEAbjCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAs8Gsctn68znh36JsFLZu+ecpaKaWWr0wxnrNhRhkgsxU+md7o4ZBw7qkgGOwJ9vRfjiD3A6NgjYYIy5mI/Yc9TgTiI+ZbSSp4mNyeJ1KYZ/8P2gpGg/+oiqMZJ+eWXRfWA1SojFOZ+aVdiJsmXs+LCuk5qODMGnV5zqQfr81EIcCAwEAATAJBgUrDgMCHQUAA4GBAHZ9RDYu3sXMf+4n+0zEyWD0ng5qBB8EkyB53Aa7eRXNUlsSVYahjAN65o43NHcZrqS/5IkFsV1ORiTpzMhiKVbdOurO1lVvOZoOUyvcU8cBddHBAfrKGpOSa9u7PteUPx/MX/ghxnRa99XhoqAnRkhSkoxkmOEKuQksgFN4Dta2</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
